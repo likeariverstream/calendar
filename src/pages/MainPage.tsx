@@ -23,8 +23,8 @@ export const MainPage = () => {
         const html = document.documentElement;
         const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight)
         const windowBottom = windowHeight + window.pageYOffset;
-        if (windowBottom >= docHeight) {
-            setScrollPosition(windowBottom)
+        setScrollPosition(windowBottom)
+        if (scrollPosition >= docHeight - 50) {
             setLimit(limit + 9)
             getData()
         }
