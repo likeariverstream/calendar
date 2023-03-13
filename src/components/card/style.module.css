@@ -1,0 +1,50 @@
+.card {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: max-content;
+    border-radius: 12px;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.06);
+    background: #2f3136;
+}
+.tour {
+    margin: 0;
+}
+.date {
+    margin: 0;
+    font-size: 12px;
+    line-height: 16px;
+}
+.stadium {
+    margin: 0;
+    font-size: 18px;
+    line-height: 22px;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+.name {
+    margin: 0;
+    font-size: 18px;
+    line-height: 22px;
+}
+.logo {
+    display: block;
+    margin: 0;
+}
+.score {
+    margin: 0;
+}

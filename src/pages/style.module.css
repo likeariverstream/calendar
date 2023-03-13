@@ -1,0 +1,17 @@
+.main {
+   display: grid;
+   padding: 24px;
+   margin: 0 auto;
+   grid-template-columns: repeat(3, 1fr); 
+   background: #36393f;
+   gap: 24px;
+   color: #f7f7f7;
+   font-size: 22px;
+   line-height: 24px;
+   max-width: fit-content;
+}
+@media screen and (max-width: 1392px) {
+   .main {
+      grid-template-columns: repeat(1, 1fr); 
+   }
+ }
