@@ -8,35 +8,31 @@ import { CardProps } from "../components/card/interface";
 export const MainPage = () => {
     const [items, setItems] = React.useState<Array<CardProps>>([])
     const [limit, setLimit] = React.useState(9)
-    const [scrollPosition, setScrollPosition] = React.useState(0);
-    const getData = () => {
-        const url = calendarUrl(limit)
+
+    const getData = (limit: number, offset = 0) => {
+        const url = calendarUrl(limit, offset)
         request(url).then((data) => {
             const { items } = data
             setItems(items)
-            console.log(data)
         }).catch(console.warn)
     }
-    const handleScroll = () => {
-        const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
-        const body = document.body;
-        const html = document.documentElement;
-        const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight)
-        const windowBottom = windowHeight + window.pageYOffset;
-        setScrollPosition(windowBottom)
-        if (scrollPosition >= docHeight - 50) {
+
+    const handleScroll = (event: WheelEvent) => {
+        if (event.deltaY > 0) {
             setLimit(limit + 9)
-            getData()
+            getData(limit, 9)
         }
     }
-    React.useEffect(() => {
 
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    })
     React.useEffect(() => {
-        getData()
+        getData(18, 9)
     }, [])
+
+    React.useEffect(() => {
+        window.addEventListener('wheel', handleScroll);
+        return () => window.removeEventListener('wheel', handleScroll);
+    })
+
     return (
         items && <main className={styles.main}>
             {items.map((item) => {
