@@ -8,7 +8,7 @@ import { CardProps } from "../components/card/interface";
 export const MainPage = () => {
     const [items, setItems] = React.useState<Array<CardProps>>([])
     const [limit, setLimit] = React.useState(9)
-
+    const [scrollPosition, setScrollPosition] = React.useState(0);
     const getData = () => {
         const url = calendarUrl(limit)
         request(url).then((data) => {
@@ -24,17 +24,19 @@ export const MainPage = () => {
         const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight)
         const windowBottom = windowHeight + window.pageYOffset;
         if (windowBottom >= docHeight) {
+            setScrollPosition(windowBottom)
             setLimit(limit + 9)
             getData()
         }
     }
     React.useEffect(() => {
-        getData()
-    }, [])
-    React.useEffect(() => {
+
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     })
+    React.useEffect(() => {
+        getData()
+    }, [])
     return (
         items && <main className={styles.main}>
             {items.map((item) => {

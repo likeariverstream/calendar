@@ -10,7 +10,13 @@
    line-height: 24px;
    max-width: fit-content;
 }
+
 @media screen and (max-width: 1392px) {
+   .main {
+      grid-template-columns: repeat(2, 1fr); 
+   }
+ }
+@media screen and (max-width: 917px) {
    .main {
       grid-template-columns: repeat(1, 1fr); 
    }

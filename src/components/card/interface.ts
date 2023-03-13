@@ -4,7 +4,7 @@ export interface CardProps {
     tourNumber: number
     scoreFtHome: number
     scoreFtAway: number
-    stadium: {
+    stadium?: {
         _id: number
         name: string
     },
